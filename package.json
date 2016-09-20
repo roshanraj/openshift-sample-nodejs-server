@@ -1,0 +1,31 @@
+{
+  "name": "openshift-sample-nodejs-server",
+  "version": "0.0.1",
+  "description": "sample nodejs server for openshift ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/roshanraj/openshift-sample-nodejs-server.git"
+  },
+  "keywords": [
+    "nodejs",
+    "openshift",
+    "express.js"
+  ],
+  "author": "rraj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/roshanraj/openshift-sample-nodejs-server/issues"
+  },
+  "homepage": "https://github.com/roshanraj/openshift-sample-nodejs-server",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "lynx": "^0.2.0",
+    "morgan": "^1.7.0"
+  }
+}
