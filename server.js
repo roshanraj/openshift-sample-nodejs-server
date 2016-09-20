@@ -2,20 +2,23 @@
 var express = require('express'),
     fs      = require('fs'),
     app     = express(),
-    morgan  = require('morgan');
-
-var bodyParser = require('body-parser');
-
+    morgan  = require('morgan'),
+    bodyParser = require('body-parser');
 
 
+// To allow CORS
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
-app.use(bodyParser.text()); // for parsing application/json
+
+app.use(bodyParser.text()); // for parsing text/plain
+//app.use(bodyParser.json()); // for parsing application/json
+// For more https://github.com/expressjs/body-parser
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(morgan('combined'))
+// Static file location
 app.use(express.static('webapp'));
 
 
@@ -23,10 +26,12 @@ var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 9090,
     ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 
 
+// Simple get
 app.get('/', function (req, res) {
      res.sendfile('./webapp/index.html');
 });
 
+// Simple post
 app.post('/post/v1/send', function (req, res) {
 	var body = req.body;
 	var listOfMeasure = body.split('\n');
